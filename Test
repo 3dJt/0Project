@@ -1,0 +1,39 @@
+import tkinter as tk
+from tkinter import messagebox
+from tkinter.ttk import Combobox
+from tkinter import *
+
+window = Tk()
+
+window.title("Калькулятор площади треугольника")
+window.geometry("500x250")
+
+lbl = Label(window, text="Выберите способ расчета площади")
+lbl.grid(row=1, column=2)
+
+def selected(event):
+    selection = combobox.get()
+    print("Выбрали:", "'" + selection + "'")
+
+methods = ["Через основание и высоту",
+           "Через две стороны и угол"]
+
+combobox = Combobox(window, values=methods, width=30, state="readonly")
+combobox.grid(row=2, column=2)
+combobox.set("Через основание и высоту")
+combobox.bind("<<ComboboxSelected>>", selected)
+
+base_lbl = Label(window, text="Основание треугольника -")
+base_lbl.grid(row=3, column=1, pady=10)
+base_ent = Entry(window) # state="disabled"
+base_ent.grid(row=3, column=2)
+
+height_lbl = Label(window, text="Высота треугольника -")
+height_lbl.grid(row=4, column=1, pady=10)
+height_ent = Entry(window)
+height_ent.grid(row=4, column=2)
+
+calc_btn = Button(window, text="Рассчитать площадь")
+calc_btn.grid(row=5, column=2)
+
+window.mainloop()
