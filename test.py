@@ -82,6 +82,23 @@ def clear_extra_widgets():
         if widget not in global_widgets:
             widget.destroy()
 
+def main_menu():
+    clear_extra_widgets()
+
+    lbl = Label(frame, text="Выберите способ расчета площади")
+    lbl.grid(row=1, column=1)
+
+    combobox = Combobox(frame, values=methods, width=30, state="readonly")
+    combobox.grid(row=2, column=1)
+    combobox.set("Через основание и высоту")
+    combobox.bind("<<ComboboxSelected>>", selected)
+
+    cb = Checkbutton(frame, text="Супер подсказка", variable=cb_var, command=support)
+    cb.place(x=40, y=110)
+
+    txt = Text(frame, width=60, height=3)
+    txt.place(x=0, y=50)
+
 def method_with_base_and_height():
     clear_extra_widgets()
 
@@ -89,7 +106,7 @@ def method_with_base_and_height():
 
     base_lbl = Label(frame, text="Основание треугольника -")
     base_lbl.grid(row=3, column=1, pady=10)
-    base_ent = Entry(frame) # state="disabled"
+    base_ent = Entry(frame)  # state="disabled"
     base_ent.grid(row=3, column=2)
 
     height_lbl = Label(frame, text="Высота треугольника -")
@@ -99,6 +116,9 @@ def method_with_base_and_height():
 
     calc_btn = Button(frame, text="Рассчитать площадь", command=func)
     calc_btn.grid(row=5, column=2)
+
+    menu_btn = Button(frame, text="В меню", command=main_menu)
+    menu_btn.grid(row=5, column=1)
 
 # Через 2 стороны и угол
 def method_with_sides_and_angle():
