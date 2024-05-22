@@ -56,13 +56,6 @@ def clear_extra_widgets():
 
 def method_with_base_and_height():
     clear_extra_widgets()
-    lbl = Label(frame, text="Выберите способ расчета площади")
-    lbl.grid(row=1, column=1)
-
-    combobox = Combobox(frame, values=methods, width=30, state="readonly")
-    combobox.grid(row=2, column=1)
-    combobox.set("Через основание и высоту")
-    combobox.bind("<<ComboboxSelected>>", selected)
 
     func = lambda: calculate_area_with_base_and_height(base_ent.get(), height_ent.get())
 
@@ -82,15 +75,8 @@ def method_with_base_and_height():
 # Через 2 стороны и угол
 def method_with_sides_and_angle():
     clear_extra_widgets()
-    lbl = Label(frame, text="Выберите способ расчета площади")
-    lbl.grid(row=1, column=1)
 
     cmd = lambda: calculate_area_with_sides_and_angle(a_ent.get(), b_ent.get(), alpha_ent.get(), var.get())
-
-    combobox = Combobox(frame, values=methods, width=30, state="readonly")
-    combobox.grid(row=2, column=1)
-    combobox.set("Через основание и высоту")
-    combobox.bind("<<ComboboxSelected>>", selected)
 
     var = StringVar()
     var.set("degrees")
