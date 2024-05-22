@@ -31,12 +31,14 @@ def show_result(area):
     area = round(area, 2)
     messagebox.showinfo('Результат', f'Площадь треугольника = {area}')
 
+# Через основание и высоту
 def calculate_area_with_base_and_height(base, height):
     base = float(base)
     height = float(height)
     area = float(base * height / 2)
     show_result(area)
 
+# Через 2 стороны и угол
 def calculate_area_with_sides_and_angle(a, b, alpha, angle_unit):
     a = float(a)
     b = float(b)
@@ -48,6 +50,7 @@ def calculate_area_with_sides_and_angle(a, b, alpha, angle_unit):
 
 def convert_degrees_to_radians(alpha):
     return math.pi / 180 * alpha
+# ---------------------
 
 def clear_extra_widgets():
     for widget in frame.winfo_children():
