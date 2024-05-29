@@ -84,6 +84,21 @@ def clear_extra_widgets():
 
 def main_menu():
     clear_extra_widgets()
+    def support():
+        text = ""
+
+        if cb_var.get():
+            text += "Выбери вариант выше ↑."
+
+        txt.delete(0.0, END)
+        txt.insert(0.0, text)
+
+    def selected(event):
+        selection = combobox.get()
+        if selection == "Через основание и высоту":
+            method_with_base_and_height()
+        elif selection == "Через две стороны и угол":
+            method_with_sides_and_angle()
 
     lbl = Label(frame, text="Выберите способ расчета площади")
     lbl.grid(row=1, column=1)
@@ -147,6 +162,9 @@ def method_with_sides_and_angle():
     alpha_lbl.grid(row=5, column=1, pady=10)
     alpha_ent = Entry(frame)
     alpha_ent.grid(row=5, column=2)
+
+    menu_btn = Button(frame, text="В меню", command=main_menu)
+    menu_btn.grid(row=6, column=1)
 
     calc_btn = Button(frame, text='Рассчитать площадь', command=cmd)
     calc_btn.grid(row=6, column=2)
